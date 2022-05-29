@@ -1,0 +1,12 @@
+CREATE TABLE public.pearson(
+id SERIAL NOT NULL PRIMARY KEY,
+name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE public.event(
+id SERIAL NOT NULL PRIMARY KEY,
+title VARCHAR(255) NOT NULL,
+description TEXT,
+date_hour TIMESTAMP NOT NULL,
+local VARCHAR(255)
+);

@@ -24,8 +24,8 @@ public class PearsonControllerTest {
 	}
 	
 	@Test
-	@DisplayName("")
-	public void filterAllTest() {
+	@DisplayName("Should filtler people by name")
+	public void filterNameTest() {
 		
 	}
 }

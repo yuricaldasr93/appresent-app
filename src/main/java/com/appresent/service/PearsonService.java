@@ -12,4 +12,8 @@ public interface PearsonService {
 	Optional<Pearson> get(long id);
 
 	Page<Pearson> find(Pearson pearson, Pageable pageRequest);
+
+	Pearson save(Pearson pearson);
+
+	Pearson update(Pearson pearson);
 }

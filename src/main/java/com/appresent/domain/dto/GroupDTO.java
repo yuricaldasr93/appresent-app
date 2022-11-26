@@ -11,8 +11,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ErrorsDTO {
+public class GroupDTO {
 
-	private String userMessage;
-	private String developerMessage;
+	private Long id;
+	private String title;
+	private String description;
 }

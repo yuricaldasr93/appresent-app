@@ -13,7 +13,7 @@ import lombok.Setter;
 @Builder
 public class GroupDTO {
 
-	private Long id;
+	private Long id;	
 	private String title;
 	private String description;
 }

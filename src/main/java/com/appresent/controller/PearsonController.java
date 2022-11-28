@@ -1,5 +1,7 @@
 package com.appresent.controller;
 
+import static com.appresent.utils.constants.ApiConstants.PEARSON_PATH;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,7 +33,7 @@ import com.appresent.domain.model.Pearson;
 import com.appresent.service.PearsonService;
 
 @RestController
-@RequestMapping("/pearson")
+@RequestMapping(PEARSON_PATH)
 public class PearsonController {
 
 	@Autowired

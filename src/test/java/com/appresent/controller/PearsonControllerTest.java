@@ -1,5 +1,6 @@
 package com.appresent.controller;
 
+import static com.appresent.utils.constants.ApiConstants.PEARSON_PATH;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -41,8 +42,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @WebMvcTest(controllers = {PearsonController.class, BeanConfig.class})
 public class PearsonControllerTest {
 
-	private static String PEARSON_API = "/pearson";
-	
 	@Autowired
 	private MockMvc mockMvc;
 	@MockBean
@@ -57,7 +56,7 @@ public class PearsonControllerTest {
 		BDDMockito.given(service.get(Mockito.anyLong())).willReturn(Optional.of(entity));
 		
 		MockHttpServletRequestBuilder request = MockMvcRequestBuilders
-				.get(PEARSON_API.concat("/"+id))
+				.get(PEARSON_PATH.concat("/"+id))
 				.accept(MediaType.APPLICATION_JSON);
 		
 		mockMvc.perform(request)
@@ -77,7 +76,7 @@ public class PearsonControllerTest {
 			.when(service).get(Mockito.anyLong());
 		
 		MockHttpServletRequestBuilder request = MockMvcRequestBuilders
-				.get(PEARSON_API.concat("/"+1l))
+				.get(PEARSON_PATH.concat("/"+1l))
 				.accept(MediaType.APPLICATION_JSON);
 		
 		mockMvc.perform(request)
@@ -98,7 +97,7 @@ public class PearsonControllerTest {
 			.willReturn(new PageImpl<>(people, PageRequest.of(0, 15), people.size()));
 		
 		MockHttpServletRequestBuilder request = MockMvcRequestBuilders
-			.get(PEARSON_API.concat("?page=0&size=15"))
+			.get(PEARSON_PATH.concat("?page=0&size=15"))
 			.accept(MediaType.APPLICATION_JSON);
 		
 		mockMvc.perform(request)
@@ -122,7 +121,7 @@ public class PearsonControllerTest {
 				pearsonEntity.getGroup().getTitle());
 		
 		MockHttpServletRequestBuilder request = MockMvcRequestBuilders
-			.get(PEARSON_API.concat(queryString))
+			.get(PEARSON_PATH.concat(queryString))
 			.accept(MediaType.APPLICATION_JSON);
 		
 		mockMvc.perform(request)
@@ -148,7 +147,7 @@ public class PearsonControllerTest {
 		String body = new ObjectMapper().writeValueAsString(dto);
 		
 		MockHttpServletRequestBuilder request = MockMvcRequestBuilders
-		.post(PEARSON_API)
+		.post(PEARSON_PATH)
 		.contentType(MediaType.APPLICATION_JSON)
 		.accept(MediaType.APPLICATION_JSON)
 		.content(body);
@@ -178,7 +177,7 @@ public class PearsonControllerTest {
 		String body = new ObjectMapper().writeValueAsString(pearsonDTO);
 		
 		MockHttpServletRequestBuilder request = MockMvcRequestBuilders
-			.put(PEARSON_API.concat("/"+entityToUpdate.getId()))
+			.put(PEARSON_PATH.concat("/"+entityToUpdate.getId()))
 			.contentType(MediaType.APPLICATION_JSON)
 			.accept(MediaType.APPLICATION_JSON)
 			.content(body);
